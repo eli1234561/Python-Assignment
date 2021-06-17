@@ -77,7 +77,7 @@ class MainScreen:
         self.master = master
         master.title("Quiz on Mental Health")
 
-        background_color = "red"
+        background_color = "blue"
 
         self.quiz_frame = Frame(master,bg=background_color,padx=130,pady=100)
         self.quiz_frame.grid()
