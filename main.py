@@ -64,7 +64,7 @@ question_answer = {
 } 
 
 def randomiser():
-    global qnum  #the question number is the key in the dictionary question_answers, we have 10 keys (10 questions)
+    global qnum  #the question number is a key in the dictionary. 10 for 10 questions
     qnum = random.randint(1, 10)
     if qnum not in asked:
         asked.append(qnum)
@@ -79,12 +79,12 @@ class MainScreen:
 
         background_color = "blue"
 
-        self.quiz_frame = Frame(master,bg=background_color,padx=130,pady=100)
+        self.quiz_frame = Frame(master,bg=background_color,padx=100,pady=100)
         self.quiz_frame.grid()
 
-        self.heading_label = Label(self.quiz_frame,text="Mental Health", font=("Pacifico", "39"),       
+        self.heading_label = Label(self.quiz_frame,text="Mental Health", font=("Pacifico", "28"),       
                                    bg=background_color,
-                                   fg='white',
+                                   fg='yellow',
                                    padx=20,
                                    pady=20)
         self.heading_label.grid(row=1, padx=20, pady=20)
@@ -96,7 +96,7 @@ class MainScreen:
         self.start_button = Button(self.quiz_frame,
                                    text="Start",
                                    font=("Pacifico", "16", "bold"),
-                                   fg='white',
+                                   fg='yellow',
                                    bg="cyan",
                                    command=self.name_collection)
         self.start_button.grid(row=3, padx=20, pady=20) 
@@ -105,9 +105,13 @@ class MainScreen:
         self.Quit_Button = Button(self.quiz_frame,
                                   text="Quit",
                                   font=("Pacifico", "13", "bold"),
-                                  fg='black',
+                                  fg='red',
                                   bg="cyan")
         self.Quit_Button.grid(row=5, padx=20, pady=20)
+    
+    def end_screen(self): 
+        root.wthdraw () 
+        open_endscreen = End(root)
 
     def name_collection(self):
         name = self.entry_box.get()
@@ -121,7 +125,7 @@ class Quiz:
         self.master = master
         master.title("Quiz on Mental Health")
 
-        background_color = "black"
+        background_color = "green"
 
         self.quiz_frame = Frame(master,
                                 bg=background_color,
@@ -131,8 +135,8 @@ class Quiz:
 
         self.question_label = Label(self.quiz_frame,
                                     text=question_answer[qnum][0],
-                                    font=("Pacifico", "16"),
-                                    fg='black',
+                                    font=("Pacifico", "15"),
+                                    fg='purple',
                                     bg="cyan")
         self.question_label.grid(row=1, padx=20, pady=20)
 
@@ -140,7 +144,7 @@ class Quiz:
 
         self.rb1 = Radiobutton(self.quiz_frame,
                                text=question_answer[qnum][1],
-                               font=("Helvetica", "12"),
+                               font=("Helvetica", "14"),
                                bg="cyan",
                                value=1,
                                padx=10,
@@ -148,7 +152,7 @@ class Quiz:
                                variable=self.var1,
                                indicator=0,
                                background="cyan",
-                               fg="black")
+                               fg="grey")
         self.rb1.grid(row=2, sticky=W)
 
         self.rb2 = Radiobutton(self.quiz_frame,
@@ -174,7 +178,7 @@ class Quiz:
                                variable=self.var1,
                                indicator=0,
                                background="cyan",
-                               fg="black")
+                               fg="White")
         self.rb3.grid(row=4, sticky=W)
 
         self.rb4 = Radiobutton(self.quiz_frame,
@@ -187,7 +191,7 @@ class Quiz:
                                variable=self.var1,
                                indicator=0,
                                background="cyan",
-                               fg="black")
+                               fg="White")
         self.rb4.grid(row=5, sticky=W)
 
         self.rb5 = Radiobutton(self.quiz_frame,
@@ -200,13 +204,13 @@ class Quiz:
                                variable=self.var1,
                                indicator=0,
                                background="cyan",
-                               fg="black")
+                               fg="White")
         self.rb5.grid(row=6, sticky=W)
 
         self.confirm_button = Button(self.quiz_frame,
                                      text="Confirm",
-                                     font=("Helvetica", "13", "bold"),
-                                     bg="cyan",
+                                     font=("Helvetica", "17", "bold"),
+                                     bg="blue",
                                      command=self.test_progress)
 
         self.confirm_button.grid(row=7, padx=5, pady=5)
@@ -218,10 +222,10 @@ class Quiz:
                                command=self.end_screen)
 
         self.score_label = Label(self.quiz_frame,
-                                 text="SCORE",
-                                 font=("Tw Cen MT", "16"),
+                                 text="POINTS",
+                                 font=("Tw Cen MT", "14"),
                                  bg=background_color)
-        self.score_label.grid(row=8, padx=10, pady=1)
+        self.score_label.grid(row=9, padx=11, pady=2)
 
     def question_setup(self):
         randomiser()
@@ -253,7 +257,7 @@ class Quiz:
             if choice == 0:
                 self.confirm_button.config(
                     text=
-                    "Try Again, You didn't select an option then submit again")
+                    "Try Again, sadly this is is wrong!")
                 choice = self.var1.get()
             else:
                 if choice == question_answer[qnum][6]:
@@ -270,21 +274,22 @@ class Quiz:
 
     def end_screen(self):
         root.withdraw()
-        open_endscreen = End()
-        End(root)
+        open_endscreen = End(root)
+        
 
 
 class End:
-    def __init__(self):
-        background = "black"
+    def __init__(self,master):
+        background = "cyan"
 
         self.end_box = Toplevel(root)
-        self.end_box.title("End Box")
+        self.end_box.title("The End Box")
 
         self.end_frame = Frame(self.end_box,
                                width=1000,
                                height=1000,
                                bg=background)
+        self.end_frame.grid()
 
         end_heading = Label(self.end_frame,
                             text='Well Done',
@@ -300,42 +305,7 @@ class End:
                              font=('Tw Cent Mt', 12, 'bold'),
                              command=self.close_end)
         exit_button.grid(row=4, pady=20)
-
-    def endScreen(self):
-        root.withdraw()
-        name = names[0]
-        file = open("leaderboard.txt", "a")
-        file.write(str(score))
-        file.write(" - ")
-        file.write(name + "\n")
-        file.close()
-
-        inputFile = open("leaderBoard.txt", 'r')
-        lineList = inputFile.readlines()
-        lineList.sort()
-        top = []
-        top10 = (lineList[-10:])
-        for line in top10:
-            point = line.split(" - ")
-            top.append(int(point[0]), point[1])
-        file.close()
-        top.sort()
-        top.reverse()
-        return_string = ""
-        for i in range(len(top)):
-            return_string += "{} - {}\n".format(top[i][0], top[i][1])
-        print(return_string)
-        open_endscrn = End()
-        open_endscrn.listLabel.config(text=return_string)
-        self.listLabel = Label(self.end_frame,
-                               text="1st Place Available",
-                               font=('Tw Cent MT', 18),
-                               width=40,
-                               bg=background,
-                               padx=10,
-                               pady=10)
-        self.listLabel.grid(column=0, row=2)
-
+        
     def close_end(self):
         self.end_box.destroy()
         root.withdraw()
