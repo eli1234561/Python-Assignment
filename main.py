@@ -99,16 +99,8 @@ class MainScreen:
                                    fg='white',
                                    bg="cyan",
                                    command=self.name_collection)
-        self.start_button.grid(row=3, padx=20, pady=20)
-
-        #Leaderboard
-        self.Leaderboard_Button = Button(self.quiz_frame,
-                                         text="LeaderBoard",
-                                         font=("Pacifico", "13", "bold"),
-                                         fg='black',
-                                         bg="cyan")
-        self.Leaderboard_Button.grid(row=4, padx=20, pady=20)
-
+        self.start_button.grid(row=3, padx=20, pady=20) 
+        
         #quit button
         self.Quit_Button = Button(self.quiz_frame,
                                   text="Quit",
