@@ -46,21 +46,21 @@ question_answer = {
         'Family Arguments', 'Stressful life situations', 'Financial Problems', 4
     ],
     7: [
-        "How many people seek public help everyday due to bullying caused by Cyber bullying",
+        "How many people seek public help everyday due to bullying caused by Social Media Cyber bullying?",
         '434343434 people', 
         '38923983 people', 
         '397492379 people', 
         '4444444444444 people',
         '637228 people', 
-        '565656 people', 
-        1],
+        'Around 5 Thousand people a day', 
+        6],
     8:[
-        "unknown", 'hello1', 'hello2', 'hello3', 'hello4', 'hello5', 'hello1', 1],
+        "What are signs of Mental Health issues?", 'Social Withdrawal', 'Laughing with friends', 'Excessive paranoia and worry or anxiety', 'Long lasting Sadness', 'Extreme fast changes in mood', 'Being really Quiet', 1],
     9:[
-        "unknown", 'hello1', 'hello2', 'hello3', 'hello4', 'hello5', 'hello1', 1],
+        "Who should you contact if you are concerned for your mental health or someone elses?", 'Police', 'Fire fighters', 'Your yoga instructer' , 'A friend or parents', 'Depression Helpline – 0800 111 757 or free text 4202', 'none of the above', 5],
     10:[
-        "Questions to be done", 
-     'hello1', 'hello2', 'hello3', 'hello4', 'hello5', 'hello1', 1]
+        "What should you say to someone who is going through Mental Depression?", 
+     'You are not alone in this! We are with you!', 'Wanna go shopping bro', 'Can you help me do the dishes', 'Can I just cut in and say Im tired so can we talk later', 'Wow...I do not care', 'Whats 10 divided by 5', 1]
 } 
 
 def randomiser():
@@ -158,7 +158,7 @@ class Quiz:
         self.rb2 = Radiobutton(self.quiz_frame,
                                text=question_answer[qnum][2],
                                font=("Helvetica", "12"),
-                               bg="cyan",
+                               bg="yellow",
                                value=2,
                                padx=10,
                                pady=10,
@@ -171,7 +171,7 @@ class Quiz:
         self.rb3 = Radiobutton(self.quiz_frame,
                                text=question_answer[qnum][3],
                                font=("Helvetica", "12"),
-                               bg="cyan",
+                               bg="red",
                                value=3,
                                padx=10,
                                pady=10,
@@ -184,7 +184,7 @@ class Quiz:
         self.rb4 = Radiobutton(self.quiz_frame,
                                text=question_answer[qnum][4],
                                font=("Helvetica", "12"),
-                               bg="cyan",
+                               bg="green",
                                value=4,
                                padx=10,
                                pady=10,
