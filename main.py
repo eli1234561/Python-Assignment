@@ -101,7 +101,7 @@ class MainScreen:
                                    bg="white",
                                    command=self.name_collection)
         self.start_button.grid(row=3, padx=25, pady=25)
-
+        #Quit button exits the quiz
         self.Quit_Button = Button(self.quiz_frame,
                                   text="Exit",
                                   font=("Osaka", "15", "bold"),
