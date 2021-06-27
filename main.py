@@ -1,3 +1,4 @@
+#tkinter import code
 from tkinter import *
 import random
 
@@ -5,7 +6,7 @@ global question_answer
 names_list = []
 asked = []
 score = 0 
-
+#Questions added in
 question_answer = { 
       1: [
         "What is Mental Health?",
@@ -58,7 +59,7 @@ question_answer = {
         "What can you do if you need help?", 'Call the NZ Health line 0800 611 116', 'Not ask for help', 'Be lonely', 'Self isolate', 'Listen to sad music', 'Call the NZ Health line 0800 611 116' , 1],
 } 
 
-
+#this randomises the questions 
 def randomiser():
     global qnum  #the question number we have 10 for 10 keys for dictionary
     qnum = random.randint(1, 9)
@@ -66,7 +67,7 @@ def randomiser():
         asked.append(qnum)
     elif qnum in asked:
         randomiser() 
-          
+  #Mainscreen Code that gives its colour , labels , title and name input box and buttons        
 class MainScreen:
     def __init__(self, master):
         self.master = master
@@ -121,7 +122,7 @@ class MainScreen:
         Quiz(root) 
   
   
-  
+  #Radio Buttons and Code for other lables and buttons that help the program work and function
 class Quiz:
     def __init__(self, master):
         self.master = master
@@ -240,7 +241,7 @@ class Quiz:
         self.rb3.config(text=question_answer[qnum][3])
         self.rb4.config(text=question_answer[qnum][4])
         self.rb5.config(text=question_answer[qnum][5])
-
+        #Test progress to track user progress or correct user even if the question is correct.
     def test_progress(self):
         global score
         scr_label = self.score_label
@@ -275,7 +276,7 @@ class Quiz:
                                         question_answer[qnum][6])
                     self.confirm_button.config(text="Confirm")
                     self.question_setup()
-
+    #end screen
     def end_screen(self):
         root.withdraw()
         open_endscreen = End(root)
@@ -284,7 +285,7 @@ class End:
     def __init__(self,master):
         background = "black"
 
-
+       #exit button that exits the Quiz
         self.end_box = Toplevel(root)
         self.end_box.title("The Exit Box")
 
@@ -314,7 +315,7 @@ class End:
         self.end_box.destroy()
         root.withdraw()
 
-
+#Titles for the Quiz and Program
 randomiser()
 if __name__ == "__main__":
     root = Tk()
@@ -325,4 +326,4 @@ if __name__ == "__main__":
 root = Tk()
 root.title("Quiz on Mental Health")
 mainscreen = MainScreen(root)
-root.mainloop()
+root.mainloop() 
