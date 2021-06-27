@@ -89,7 +89,7 @@ class MainScreen:
                                    padx=20,
                                    pady=20)
         self.heading_label.grid(row=1, padx=24, pady=24)
-
+        #Entry box for the end user to type in input (name)
         self.entry_box = Entry(self.quiz_frame)
         self.entry_box.grid(row=2, padx=22 ,pady=22)
 
