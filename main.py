@@ -2,11 +2,10 @@
 from tkinter import *
 import random
 
-global question_answer
 names_list = []
 asked = []
 score = 0 
-#Questions added in
+#Questions added in and questions and answers displayed
 question_answer = { 
       1: [
         "What is Mental Health?",
@@ -72,9 +71,9 @@ class MainScreen:
     def __init__(self, master):
         self.master = master
         master.title("Quiz on Mental Health")
-
+            #Background colour blue for Quiz pages
         background_color = "blue" 
-
+            #Code for quiz frame surrounding quiz
         self.quiz_frame = Frame(master,
                                 bg=background_color,
                                 padx=100,
@@ -93,7 +92,7 @@ class MainScreen:
         self.entry_box = Entry(self.quiz_frame)
         self.entry_box.grid(row=2, padx=22 ,pady=22)
 
-        #start button
+        #start button for quiz
         self.start_button = Button(self.quiz_frame,
                                    text="Start Quiz",
                                    font=("Osaka", "14", "bold"),
@@ -110,7 +109,7 @@ class MainScreen:
                                   command=self.end_screen)
         self.Quit_Button.grid(row=6, padx=20, pady=20)
 
-
+      #end screen for quiz
     def end_screen(self):
         root.withdraw()
         open_endscreen = End(root)
@@ -127,7 +126,7 @@ class Quiz:
     def __init__(self, master):
         self.master = master
         master.title("Quiz on Mental Health")
-
+            #background color for title page 
         background_color = "blue"
 
         self.quiz_frame = Frame(master,
@@ -135,7 +134,7 @@ class Quiz:
                                 padx=100,
                                 pady=100)
         self.quiz_frame.grid()
-
+             #Question label for quiz
         self.question_label = Label(self.quiz_frame,
                                     text=question_answer[qnum][0],
                                     font=("Osaka", "18"),
@@ -144,7 +143,7 @@ class Quiz:
         self.question_label.grid(row=1, padx=20, pady=20)
 
         self.var1 = IntVar()
-
+             #Radio button for Quiz 
         self.rb1 = Radiobutton(self.quiz_frame,
                                text=question_answer[qnum][1],
                                font=("Osaka", "14"),
@@ -157,7 +156,7 @@ class Quiz:
                                background="white",
                                fg="black")
         self.rb1.grid(row=2, sticky=W)
-
+           #Radio button for Quiz
         self.rb2 = Radiobutton(self.quiz_frame,
                                text=question_answer[qnum][2],
                                font=("Osaka", "14"),
@@ -170,7 +169,7 @@ class Quiz:
                                background="white",
                                fg="black")
         self.rb2.grid(row=3, sticky=W)
-
+            #Radio button for Quiz
         self.rb3 = Radiobutton(self.quiz_frame,
                                text=question_answer[qnum][3],
                                font=("Osaka", "13"),
@@ -183,7 +182,7 @@ class Quiz:
                                background="white",
                                fg="black")
         self.rb3.grid(row=4, sticky=W)
-
+           #Radio button for Quiz
         self.rb4 = Radiobutton(self.quiz_frame,
                                text=question_answer[qnum][4],
                                font=("Osaka", "13"),
@@ -196,7 +195,7 @@ class Quiz:
                                background="white",
                                fg="black")
         self.rb4.grid(row=5, sticky=W)
-
+        #Radio button for Quiz
         self.rb5 = Radiobutton(self.quiz_frame,
                                text=question_answer[qnum][5],
                                font=("Osaka", "13"),
@@ -209,7 +208,7 @@ class Quiz:
                                background="white",
                                fg="black")
         self.rb5.grid(row=6, sticky=W)
-
+             #Confirm button for quiz
         self.confirm_button = Button(self.quiz_frame,
                                      text="Confirm",
                                      font=("Osaka", "13", "bold"),
@@ -217,21 +216,21 @@ class Quiz:
                                      command=self.test_progress)
 
         self.confirm_button.grid(row=7, padx=5, pady=5)
-
+            #End quiz button
         self.end_quiz = Button(self.quiz_frame,
                                text="End Quiz",
                                font=("Osaka", "13", "bold"),
                                bg="white",
                                command=self.end_screen)
         self.end_quiz.grid(row=9, padx=10, pady=10)
-
+            #Score label for Quiz
         self.score_label = Label(self.quiz_frame,
                                  text="SCORE",
                                  font=("Osaka", "16"),
                                  bg=background_color,
                                  fg="black")
         self.score_label.grid(row=8, padx=10, pady=1)
-
+         #question randomizer for Quiz
     def question_setup(self):
         randomiser()
         self.var1.set(0)
@@ -251,13 +250,13 @@ class Quiz:
                 score += 1
                 scr_label.config(text=score)
                 self.confirm_button.config(text="Confirm")
-
+             #Question and Answer correction for quiz
             else:
                 score += 0
                 scr_label.config(text="The correct answer was: " +
                                  question_answer[qnum][6])
                 self.confirm_button.config(text="Confirm")
-
+            #Question And answer correction if Answer is wrong
         else:
             if choice == 0:
                 self.confirm_button.config(
@@ -276,7 +275,7 @@ class Quiz:
                                         question_answer[qnum][6])
                     self.confirm_button.config(text="Confirm")
                     self.question_setup()
-    #end screen
+    #end screen for Quiz
     def end_screen(self):
         root.withdraw()
         open_endscreen = End(root)
@@ -295,14 +294,14 @@ class End:
                                bg=background,
                                )
         self.end_frame.grid()
-
+            #End heading for Ending page of Quiz
         self.end_heading = Label(self.end_frame,
                             text='Good Job',
                             font=('Osaka', 22, 'bold'),
                             bg=background,
                             pady=15)
         self.end_heading.grid(row=0)
-
+         #Exit button for Quiz to exit the quiz
         self.exit_button = Button(self.end_frame,
                              text='Exit',
                              width=10,
@@ -322,7 +321,7 @@ if __name__ == "__main__":
     root.title("Quiz on Mental Health")
     quiz_instance = MainScreen(root)
     root.mainloop()
-
+     #Root tk and title for Quiz
 root = Tk()
 root.title("Quiz on Mental Health")
 mainscreen = MainScreen(root)
